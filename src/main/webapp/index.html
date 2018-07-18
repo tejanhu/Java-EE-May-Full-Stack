@@ -24,6 +24,7 @@ Hide div: <input type="checkbox" ng-model="isHidden"/>
 <div ng-init ="name='john'">
     <div ng-hide="isHidden">
     Name: <input type="text" ng-model="name"/>{{name}}
+
     <br/>
     <button ng-click="name='Jane'">Change name</button>
 </div>
@@ -51,36 +52,35 @@ Example 3: ng-repeat and filters
     </table>
 </div>-->
 
+     
+    <!--Task: JSON Objects and Searching -->
+    <div ng-init ="countries=[{'id': '1','name': 'Dominica Republic', 'language': 'Espanol','population': '300000'},{'id': '2','name': 'Brazil', 'language': 'Portugues','population': '500000'}, {'id': '3','name': 'Angola', 'language': 'Lingala','population': '200000'},{'id': '4','name': 'Cote D\'Voire', 'language': 'Francais','population': '150000'}]">
+    	Search Country: <input type="text"  ng-model="name"/>
+    	<h3><span>Country example</span></h3>
+    	<ul>
+    		<li ng-repeat="country in countries">{{country}}</li>
+    	</ul>
+    	<h3><span>Countries Table</span></h3>
+    	<table class="table">
+    		<tr>
+    			<th>name</th>
+    			<th>language</th>
+    			<th>population</th>
+    		</tr>
+    		<tr ng-repeat="country in countries | filter : name">
+    			<td>{{country.name |  uppercase}}</td>
+    			<td>{{country.language | uppercase}}</td>
+    			<td>{{country.population}}</td>
+    		</tr>
+    	</table>
+    </div>
+   
+	<link rel="stylesheet" href="scripts/bootstrap.min.css"> 
+    <script src="scripts/jquery-2.1.4.min.js"></script>
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/ui-router.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    </div>
 
-
-
-<!--Task: JSON Objects and Searching -->
-<div ng-init ="countries=[{'id': '1','name': 'Dominica Republic', 'language': 'Espanol','population': '300000'},{'id': '2','name': 'Brazil', 'language': 'Portugues','population': '500000'}, {'id': '3','name': 'Angola', 'language': 'Lingala','population': '200000'},{'id': '4','name': 'Cote D\'Voire', 'language': 'Francais','population': '150000'}]">
-    Search Country: <input type="text"  ng-model="name"/>
-    <h3><span>Country example</span></h3>
-    <ul>
-        <li ng-repeat="country in countries">{{country}}</li>
-    </ul>
-    <h3><span>Countries Table</span></h3>
-    <table class="table">
-        <tr>
-            <th>name</th>
-            <th>language</th>
-            <th>population</th>
-        </tr>
-        <tr ng-repeat="country in countries | filter : name">
-            <td>{{country.name |  uppercase}}</td>
-            <td>{{country.language | uppercase}}</td>
-            <td>{{country.population}}</td>
-        </tr>
-    </table>
-</div>
-
-<link rel="stylesheet" href="scripts/bootstrap.min.css">
-<script src="scripts/jquery-2.1.4.min.js"></script>
-<script src="scripts/angular.min.js"></script>
-<script src="scripts/ui-router.min.js"></script>
-<script src="scripts/bootstrap.min.js"></script>
-</div>
 </body>
 </html>
